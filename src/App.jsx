@@ -709,10 +709,42 @@ const App = () => {
     </div>
   );
 
+  const MobileHeader = () => (
+    <div className="mobile-header">
+      <div className="logo" style={{ marginBottom: 0, fontSize: '1.25rem' }}>FINANCE<span>FLOW</span></div>
+    </div>
+  );
+
+  const BottomNav = () => (
+    <nav className="mobile-nav">
+      <button className={`nav-item-mobile ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
+        <LayoutDashboard size={20} />
+        <span>대시보드</span>
+      </button>
+      <button className={`nav-item-mobile ${activeTab === 'history' ? 'active' : ''}`} onClick={() => setActiveTab('history')}>
+        <Search size={20} />
+        <span>내역</span>
+      </button>
+      <button className={`nav-item-mobile ${activeTab === 'ai' ? 'active' : ''}`} onClick={() => setActiveTab('ai')}>
+        <Sparkles size={20} />
+        <span>AI</span>
+      </button>
+      <button className={`nav-item-mobile ${activeTab === 'news' ? 'active' : ''}`} onClick={() => setActiveTab('news')}>
+        <Newspaper size={20} />
+        <span>뉴스</span>
+      </button>
+      <button className="nav-item-mobile" onClick={() => setIsModalOpen(true)} style={{ color: 'var(--primary)' }}>
+        <Plus size={20} />
+        <span>추가</span>
+      </button>
+    </nav>
+  );
+
   return (
     <div className="app-container">
+      <MobileHeader />
       <Sidebar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         {activeTab === 'dashboard' && <Dashboard />}
         {activeTab === 'analysis' && <AnalysisView />}
         {activeTab === 'history' && <HistoryView />}
@@ -720,6 +752,7 @@ const App = () => {
         {activeTab === 'news' && <EconomyNewsView />}
         {activeTab === 'import' && <ImportView />}
       </div>
+      <BottomNav />
       <Modal />
     </div>
   );
