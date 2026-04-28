@@ -40,12 +40,12 @@ const COLORS = ['#0145F2', '#6366F1', '#0EA5E9', '#3B82F6', '#1D4ED8'];
 const App = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [transactions, setTransactions] = useState(() => {
-    const saved = localStorage.getItem('finance_flow_data');
+    const saved = localStorage.getItem('finance_flow_live');
     return saved ? JSON.parse(saved) : INITIAL_TRANSACTIONS;
   });
 
   useEffect(() => {
-    localStorage.setItem('finance_flow_data', JSON.stringify(transactions));
+    localStorage.setItem('finance_flow_live', JSON.stringify(transactions));
   }, [transactions]);
 
   // Calculations
@@ -151,7 +151,7 @@ const App = () => {
   const handleResetData = () => {
     if (window.confirm('모든 거래 데이터를 삭제하시겠습니까? (복구할 수 없습니다)')) {
       setTransactions([]);
-      localStorage.removeItem('finance_flow_data');
+      localStorage.removeItem('finance_flow_live');
       alert('데이터가 초기화되었습니다.');
     }
   };
