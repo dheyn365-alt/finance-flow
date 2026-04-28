@@ -484,26 +484,16 @@ const App = () => {
 
   const EconomyNewsView = () => {
     const newsList = [
-      { id: 1, title: "현대차·기아, 중국 바이두와 '커넥티드카' 동맹", desc: "중국 시장 재도약을 위해 바이두와 지능형 커넥티비티 공동 개발 협약을 체결했습니다.", category: "기업", url: "https://www.yna.co.kr/view/AKR20240428014500003" },
-      { id: 2, title: "SSG닷컴, 업계 최초 GPT 활용 '리뷰 요약' 도입", desc: "수많은 리뷰를 AI가 요약하여 핵심 정보를 한눈에 볼 수 있는 서비스를 시작했습니다.", category: "기술", url: "https://www.sedaily.com/NewsView/2D81U7U5E4" },
-      { id: 3, title: "저축은행 연체율 12년 만에 최대폭 상승", desc: "고금리와 부동산 경기 침체 영향으로 저축은행들의 건전성 관리에 비상이 걸렸습니다.", category: "금융", url: "https://www.mk.co.kr/news/economy/11002341" },
-      { id: 4, title: "HD현대마린솔루션, IPO 역대급 흥행 예고", desc: "올해 상반기 최대어로 꼽히는 가운데 기관 수요 예측에서 높은 관심을 받았습니다.", category: "증시", url: "https://www.etoday.co.kr/news/view/2354897" },
-      { id: 5, title: "외식업체 5곳 중 1곳 폐업… 자영업자 '눈물의 폐업'", desc: "고물가와 인건비 상승을 버티지 못한 외식업체들의 폐업률이 급격히 늘고 있습니다.", category: "경제", url: "https://www.hankyung.com/article/2024042800011" },
-      { id: 6, title: "양배추 가격 급등… '금(金)배추' 이어 장바구니 물가 비상", desc: "기상 악화로 채소류 가격이 폭등하며 서민들의 생활 물가 부담이 가중되고 있습니다.", category: "경제", url: "https://www.donga.com/news/Economy/article/all/20240428/124694581/1" },
-      { id: 7, title: "금감원, 부동산 PF 구조조정 현장 점검 착수", desc: "부실 사업장 정리를 촉진하기 위해 저축은행 등 금융권에 대한 압박 수위를 높입니다.", category: "금융", url: "https://www.newsis.com/view/?id=NISX20240428_0002716301" },
-      { id: 8, title: "LG유플러스, 레벨4 자율주행 시장 선점 박차", desc: "통신 기술을 활용한 무인 자율주행 상용화를 위해 기술 고도화에 집중하고 있습니다.", category: "기술", url: "https://www.yna.co.kr/view/AKR20240428014700017" },
-      { id: 9, title: "이커머스 업계, '5월 가정의 달' 대규모 할인 경쟁", desc: "어린이날, 어버이날을 앞두고 선물 수요를 잡기 위한 마케팅 전쟁이 치열합니다.", category: "기업", url: "https://www.sedaily.com/NewsView/2D81U7U5E5" },
-      { id: 10, title: "금융권, 저출산 문제 해결 위해 '다자녀 지원' 확대", desc: "출산 장려를 위한 금리 우대 상품과 지원 패키지 등 사회적 공헌 활동이 늘고 있습니다.", category: "복지", url: "https://news.mt.co.kr/mtview.php?no=2024042809152200000" },
-      { id: 11, title: "G마켓 '빅스마일데이' 개막… 연중 최대 쇼핑 축제", desc: "연중 가장 큰 규모의 할인 행사를 통해 소비 심리 회복에 나섭니다.", category: "기업", url: "https://www.etoday.co.kr/news/view/2354900" },
-      { id: 12, title: "모바일 비대면 세탁 서비스 시장 '폭풍 성장'", desc: "편리함을 추구하는 소비 트렌드에 따라 세탁 앱 이용자가 급격히 증가하고 있습니다.", category: "산업", url: "https://www.hankyung.com/article/2024042800021" },
-      { id: 13, title: "R&D 예비타당성 조사 폐지 추진… 기술 경쟁력 강화", desc: "정부가 도전적인 연구 개발을 가속화하기 위해 불필요한 규제를 철폐합니다.", category: "정책", url: "https://www.yna.co.kr/view/AKR20240428014800002" },
-      { id: 14, title: "에너지 시설 공습에 따른 글로벌 유가 변동성 확대", desc: "중동 및 유럽의 지정학적 리스크가 유가 상승 압박으로 작용하고 있습니다.", category: "증시", url: "https://www.mk.co.kr/news/world/11002345" },
-      { id: 15, title: "효성, 독자 기술로 원천 소재 시장 공략 가속", desc: "글로벌 시장 경쟁 우위를 점하기 위해 자체 핵심 기술 확보에 주력하고 있습니다.", category: "기업", url: "https://www.donga.com/news/Economy/article/all/20240428/124694582/1" },
-      { id: 16, title: "롯데백화점, 체험형 '포켓몬 팝업' 대흥행", desc: "MZ세대와 가족 단위 고객을 겨냥한 체험형 콘텐츠가 집객 효과를 톡톡히 보고 있습니다.", category: "기업", url: "https://news.mt.co.kr/mtview.php?no=2024042810153300000" },
-      { id: 17, title: "증권사 1분기 어닝 서프라이즈… 2분기 전망은 '신중'", desc: "거래대금 증가로 실적은 좋았으나 부동산 PF 등 잠재 리스크 관리가 관건입니다.", category: "증시", url: "https://www.sedaily.com/NewsView/2D81U7U5E6" },
-      { id: 18, title: "원자재 가격 상승 여파… 식음료 인상 도미노 우려", desc: "국제 유가와 원자재값 인상이 가공식품 가격 상승으로 이어질 조짐입니다.", category: "경제", url: "https://www.yna.co.kr/view/AKR20240428014900003" },
-      { id: 19, title: "홈쇼핑 업계, '스타 쇼호스트' 영입 전쟁 치열", desc: "모바일 방송 강화와 고객 확보를 위해 검증된 쇼호스트 모시기에 사활을 걸었습니다.", category: "산업", url: "https://www.etoday.co.kr/news/view/2354905" },
-      { id: 20, title: "청년층 경제적 자립 돕는 '금융 교육' 열풍", desc: "올바른 투자와 자산 관리를 배우려는 청년들의 수요가 급증하고 있습니다.", category: "복지", url: "https://www.mk.co.kr/news/economy/11002350" }
+      { id: 1, title: "3년간 프리미엄 리뉴얼 마친 롯데백화점 인천점, '1조 클럽 노린다'", desc: "롯데백화점 인천점이 3년간의 프리미엄 리뉴얼을 완료해 '연 매출 1조 클럽'에 입성할 준비를 마쳤습니다.", category: "유통", url: "https://n.news.naver.com/mnews/article/469/0000927969" },
+      { id: 2, title: "자이언트네트워크그룹, ‘제28차 CPN 연례 컨퍼런스’ 개최", desc: "물류 기업 자이언트네트워크그룹은 내달 1~5일 서울 중구 롯데호텔 서울에서 '제28차 CPN 연례 컨퍼런스'를 공동 개최합니다.", category: "기업", url: "https://n.news.naver.com/mnews/article/020/0003715866" },
+      { id: 3, title: "‘7연속 금리동결’ 금통위원들 “중동 변수 지켜봐야”", desc: "한국은행 금융통화위원들이 7연속 기준금리 동결을 결정하면서 중동 전쟁 영향을 더 지켜보고 대응할 필요가 있다고 판단했습니다.", category: "금융", url: "https://n.news.naver.com/mnews/article/056/0012171292" },
+      { id: 4, title: "'예타 면제'로 공급 물꼬…도심 3.4만 가구 사업 앞당긴다", desc: "정부가 도심 내 주택 공급을 앞당기기 위해 총 3만4000가구 규모의 공공주택사업 기간을 단축하기로 했습니다.", category: "부동산", url: "https://n.news.naver.com/mnews/article/003/0013914416" },
+      { id: 5, title: "삼성SDI, 1분기 영업손실 1556억원… 적자 폭 개선", desc: "삼성SDI가 올해 1분기 1556억원의 영업손실을 기록하며 지난해 같은 기간과 비교해 적자 폭을 크게 줄였습니다.", category: "기업", url: "https://n.news.naver.com/mnews/article/138/0002226103" },
+      { id: 6, title: "주담대 금리 상승세…2년4개월 만에 최고", desc: "기준금리 동결 속에서도 은행권의 주택담보대출 금리는 오름세를 이어가며 2년4개월 만에 최고 수준을 기록했습니다.", category: "금융", url: "https://n.news.naver.com/mnews/article/028/0002802789" },
+      { id: 7, title: "현대건설, 1Q 영업익 1809억원…전년比 15%↓", desc: "현대건설은 올해 1분기 연결 기준 영업이익이 1809억원으로 지난해 같은 기간보다 15.4% 줄었다고 공시했습니다.", category: "기업", url: "https://n.news.naver.com/mnews/article/277/0005755986" },
+      { id: 8, title: "부정 수급 최대 5배 제재…중기부, 1530곳 정밀 점검", desc: "중소벤처기업부는 의심 징후가 포착된 1530개 사를 대상으로 부정수급 근절을 위한 현장 정밀 점검을 실시합니다.", category: "정책", url: "https://n.news.naver.com/mnews/article/421/0008916417" },
+      { id: 9, title: "로이터 '삼성전자, 연내 중국 가전·TV 판매 사업 철수'", desc: "삼성전자가 중국 업체들의 저가 공세로 인한 가격 경쟁력 약화로 중국 내 가전·TV 판매 사업을 철수할 수 있다는 보도가 나왔습니다.", category: "기업", url: "https://n.news.naver.com/mnews/article/031/0001025089" },
+      { id: 10, title: "SK에코플랜트 1조 FI 투자금 상환…IPO 부담 덜었다", desc: "SK에코플랜트가 보유 자금을 활용해 1조 500억원 규모의 투자금을 상환하며 IPO를 앞두고 재무 부담을 경감했습니다.", category: "기업", url: "https://n.news.naver.com/mnews/hotissue/article/011/0004615595?type=series&cid=2002346" }
     ];
 
     return (
