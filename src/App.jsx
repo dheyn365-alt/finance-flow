@@ -14,7 +14,8 @@ import {
   CreditCard,
   Plus,
   Sparkles,
-  Newspaper
+  Newspaper,
+  Trash2
 } from 'lucide-react';
 import { 
   AreaChart, 
@@ -156,6 +157,12 @@ const App = () => {
     }
   };
 
+  const handleDeleteTransaction = (id) => {
+    if (window.confirm('이 내역을 삭제하시겠습니까?')) {
+      setTransactions(transactions.filter(t => t.id !== id));
+    }
+  };
+
   const generateAIReport = () => {
     setIsAiLoading(true);
     // Simulate AI analysis delay
@@ -269,11 +276,20 @@ const App = () => {
                     <div className="text-muted" style={{ fontSize: '0.75rem' }}>{t.date} · {t.provider}</div>
                   </div>
                 </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div className={`font-bold ${t.amount > 0 ? 'text-primary' : ''}`}>
-                    {t.amount > 0 ? '+' : ''}{t.amount.toLocaleString()}원
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ textAlign: 'right' }}>
+                    <div className={`font-bold ${t.amount > 0 ? 'text-primary' : ''}`}>
+                      {t.amount > 0 ? '+' : ''}{t.amount.toLocaleString()}원
+                    </div>
+                    <span className="category-chip">{t.category}</span>
                   </div>
-                  <span className="category-chip">{t.category}</span>
+                  <button 
+                    onClick={() => handleDeleteTransaction(t.id)}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem', color: '#ff4d4d', opacity: 0.5 }}
+                    className="delete-btn"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </div>
             ))}
@@ -460,6 +476,7 @@ const App = () => {
               <th>카테고리</th>
               <th>결제 수단</th>
               <th style={{ textAlign: 'right' }}>금액</th>
+              <th style={{ textAlign: 'center', width: '60px' }}>관리</th>
             </tr>
           </thead>
           <tbody>
@@ -471,6 +488,15 @@ const App = () => {
                 <td className="text-muted">{t.provider}</td>
                 <td style={{ textAlign: 'right' }} className={`font-bold ${t.amount > 0 ? 'text-primary' : ''}`}>
                   {t.amount > 0 ? '+' : ''}{t.amount.toLocaleString()}원
+                </td>
+                <td style={{ textAlign: 'center' }}>
+                  <button 
+                    onClick={() => handleDeleteTransaction(t.id)}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ff4d4d', opacity: 0.6 }}
+                    title="삭제"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </td>
               </tr>
             ))}
