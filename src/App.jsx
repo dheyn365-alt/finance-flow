@@ -32,13 +32,8 @@ import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
 
 // Mock Initial Data
-const INITIAL_TRANSACTIONS = [
-  { id: 1, date: '2024-04-20', title: '스타벅스 강남점', amount: -6500, category: '식비', provider: '토스' },
-  { id: 2, date: '2024-04-19', title: '쿠팡 결제', amount: -32000, category: '쇼핑', provider: '네이버페이' },
-  { id: 3, date: '2024-04-18', title: '급여 입금', amount: 3500000, category: '수입', provider: '신한은행' },
-  { id: 4, date: '2024-04-17', title: 'GS25 편의점', amount: -4200, category: '식비', provider: '신한카드' },
-  { id: 5, date: '2024-04-16', title: '넷플릭스 구독', amount: -17000, category: '생활', provider: '현대카드' },
-];
+// Mock Initial Data - Set to empty for production use
+const INITIAL_TRANSACTIONS = [];
 
 const COLORS = ['#0145F2', '#6366F1', '#0EA5E9', '#3B82F6', '#1D4ED8'];
 
@@ -153,6 +148,14 @@ const App = () => {
     });
   };
 
+  const handleResetData = () => {
+    if (window.confirm('모든 거래 데이터를 삭제하시겠습니까? (복구할 수 없습니다)')) {
+      setTransactions([]);
+      localStorage.removeItem('finance_flow_data');
+      alert('데이터가 초기화되었습니다.');
+    }
+  };
+
   const generateAIReport = () => {
     setIsAiLoading(true);
     // Simulate AI analysis delay
@@ -205,7 +208,7 @@ const App = () => {
         <button className="nav-item" onClick={() => setIsModalOpen(true)} style={{ background: 'var(--primary)', color: 'white', marginBottom: '1rem' }}>
           <Plus size={20} /> 거래 추가
         </button>
-        <button className="nav-item"><Settings size={20} /> 설정</button>
+        <button className="nav-item" onClick={handleResetData}><Settings size={20} /> 데이터 초기화</button>
       </div>
     </div>
   );
